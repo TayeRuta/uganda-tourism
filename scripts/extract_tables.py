@@ -24,6 +24,9 @@ Outputs (data/processed/)
   gorilla_permits.csv       gorilla tracking permits available and sold by month, 2020–2024
   chimp_permits.csv         chimpanzee tracking permits available and sold by quarter, 2020–2024
   hotel_occupancy.csv       hotel room occupancy by month (2020–2024) and by region
+  h1_parks_monthly.csv      national park visits by month, January–June 2022–2026 (Jan–Jun 2026 report)
+  h1_parks_by_park.csv      visits by park, January–June 2025 and 2026
+  h1_gorilla_permits.csv    gorilla permits available and sold by month, January–June 2022–2026
 """
 import re
 from pathlib import Path
@@ -269,6 +272,51 @@ def main():
         rows += [{'scope': r_, 'year': y, 'month': None, 'occupancy': v[i]} for i, y in enumerate(Y20)]
     pd.DataFrame(rows).to_csv(PROC / 'hotel_occupancy.csv', index=False)
     print('hotel occupancy: saved (2024 runs to September)')
+
+    # ---------------------------------------------------------------- January–June 2026 performance report
+    h1 = pages('mtwa_performance_jan_jun_2026.pdf')
+    YH, M6 = list(range(2022, 2027)), MONTHS[:6]
+    g = grab(block(h1, 'Table 9: Visitations'), M6 + ['TOTAL'], 5)
+    hp = pd.DataFrame([{'year': y, 'month': m + 1, 'visits': g[M][i]} for m, M in enumerate(M6) for i, y in enumerate(YH)])
+    if any(abs(hp[hp['year'] == y]['visits'].sum() - g['TOTAL'][i]) > 2 for i, y in enumerate(YH)):
+        raise SystemExit('Jan–Jun park visits do not add to totals')
+    # The 2022–2024 months must match the Statistical Abstract
+    both = hp.merge(pm, on=['year', 'month'], suffixes=('', '_abstract'))
+    if (both['visits'] - both['visits_abstract']).abs().max() > 2:
+        raise SystemExit('Jan–Jun 2026 report disagrees with the Statistical Abstract on 2022–2024 park visits')
+    hp.to_csv(PROC / 'h1_parks_monthly.csv', index=False)
+    print('Jan–Jun park visits: OK (totals match; 2022–2024 agree with the abstract)')
+
+    t = block(h1, 'Table 11: Visitors')
+    t = t[:t.find('Table 12')]               # this report prints no source line between tables
+    rows = []
+    for line in t.splitlines():
+        lab, v = row(line)
+        if lab and len(v) == 2 and not lab.upper().startswith(('TOTAL', 'NATIONAL PARKS')):
+            rows.append({'park': lab.replace(' National Park', '').replace('Montains', 'Mountains'), 2025: v[0], 2026: v[1]})
+        if lab.upper() == 'TOTAL':
+            tot = v
+    hb = pd.DataFrame(rows)
+    if abs(hb[2025].sum() - tot[0]) > 2 or abs(hb[2026].sum() - tot[1]) > 2:
+        raise SystemExit('Jan–Jun visits by park do not add to totals')
+    hb.to_csv(PROC / 'h1_parks_by_park.csv', index=False)
+    print('Jan–Jun visits by park: OK')
+
+    t = block(h1, 'Table 12: Gorilla Permit sales')
+    av_i, so_i = t.find('Permits Available'), t.find('Permits Sold')
+    a_ = grab(t[av_i:so_i], M6 + ['TOTAL'], 5)
+    s_ = grab(t[so_i:], M6 + ['TOTAL'], 5)
+    hg = pd.DataFrame([{'year': y, 'month': m + 1, 'available': a_[M][i], 'sold': s_[M][i]} for m, M in enumerate(M6) for i, y in enumerate(YH)])
+    for col, src in [('available', a_), ('sold', s_)]:
+        if any(abs(hg[hg['year'] == y][col].sum() - src['TOTAL'][i]) > 2 for i, y in enumerate(YH)):
+            raise SystemExit(f'Jan–Jun gorilla {col} do not add to totals')
+    gz = pd.read_csv(PROC / 'gorilla_permits.csv')
+    gz['month'] = gz['period'].map({M: i + 1 for i, M in enumerate(MONTHS)})
+    chk = hg.merge(gz, on=['year', 'month'], suffixes=('', '_abstract'))
+    if (chk['sold'] - chk['sold_abstract']).abs().max() > 2 or (chk['available'] - chk['available_abstract']).abs().max() > 2:
+        raise SystemExit('Jan–Jun 2026 report disagrees with the Statistical Abstract on 2022–2024 gorilla permits')
+    hg.to_csv(PROC / 'h1_gorilla_permits.csv', index=False)
+    print('Jan–Jun gorilla permits: OK (totals match; 2022–2024 agree with the abstract)')
 
 
 if __name__ == '__main__':

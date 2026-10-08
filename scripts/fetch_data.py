@@ -6,7 +6,7 @@ Usage (from anywhere):
     python scripts/extract_tables.py
 
 Outputs
-  data/raw/pdf/            Ministry of Tourism Statistical Abstract 2025;
+  data/raw/pdf/            Ministry of Tourism Statistical Abstract 2025 and January–June 2026 performance report;
                            Uganda Bureau of Statistics Statistical Abstracts 2017 and 2020; Uganda Wildlife
                            Authority conservation tariff 2024–2026 (not committed: re-downloaded here)
   data/raw/untourism/      UN Tourism inbound arrivals, arrivals by purpose and inbound expenditure, all countries
@@ -26,6 +26,7 @@ SSL = ssl.create_default_context(cafile=certifi.where())
 MTWA = 'https://www.tourism.go.ug/wp-content/uploads/publications/'
 PDFS = {
     'mtwa_statistical_abstract_2025.pdf': MTWA + 'statistical-abstract-2025-full.pdf',
+    'mtwa_performance_jan_jun_2026.pdf': MTWA + 'statistics-performance-report-jan-june-2026.pdf',
     'uwa_conservation_tariff_2024_2026.pdf': MTWA + 'uwa-conservation-tariff-2024-2026.pdf',
     'ubos_statistical_abstract_2017.pdf': 'https://www.ubos.org/wp-content/uploads/publications/03_20182017_Statistical_Abstract.pdf',
     'ubos_statistical_abstract_2020.pdf': 'https://library.health.go.ug/sites/default/files/resources/UBOS%20Statistical%20Abstract%202020.pdf',

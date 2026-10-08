@@ -79,6 +79,22 @@ def load_chimp():
     return d
 
 
+def load_h1_gorilla():
+    d = pd.read_csv(PROC / 'h1_gorilla_permits.csv')
+    d['utilisation'] = d['sold'] / d['available']
+    return d
+
+
+def load_h1_parks():
+    return pd.read_csv(PROC / 'h1_parks_monthly.csv'), pd.read_csv(PROC / 'h1_parks_by_park.csv').set_index('park')
+
+
+# Low-season gorilla permit discount: US$600 instead of US$800 for foreign non-residents in April, May and November,
+# announced by the Uganda Wildlife Authority on 26 February 2026 as reported by several tour operators. Not yet in a
+# published tariff. An earlier low-season discount ran from 2011 to November 2017.
+DISCOUNT = {'announced': '2026-02-26', 'months': [4, 5, 11], 'price': 600, 'full_price': 800}
+
+
 def load_hotels():
     return pd.read_csv(PROC / 'hotel_occupancy.csv')
 

@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 from tourism import (ROOT, PROC, MON, GORILLA_PERMIT_USD, load_parks_annual, load_parks_monthly, load_parks_category,
                      load_arrivals_purpose, load_arrivals_monthly, load_arrivals_region, load_overseas_markets,
-                     load_gorilla, load_chimp, load_untourism, load_rainfall)
+                     load_gorilla, load_chimp, load_untourism, load_rainfall, load_h1_gorilla, DISCOUNT)
 
 REPORT = ROOT / 'reports' / 'tourism_report.html'
 
@@ -88,7 +88,28 @@ def main():
            'jul_aug': r4(ps.loc[[7, 8]].sum()), 'march': r4(ps.loc[3]),
            'africa_share': r4(ar.loc[2024, 'AFRICA'] / ar.loc[2024, 'TOTAL'] * 100),
            'outside_2024': r4(ar.loc[2024, over].sum())}
-    data = clean({'purpose': purpose, 'regions': regions, 'markets': markets, 'receipts': receipts, 'recovery': recovery,
+    # Low-season test and park changes (notebook 02)
+    hg = load_h1_gorilla()
+    h1 = {int(y): [r4(v) for v in x.sort_values('month')['utilisation'] * 100] for y, x in hg[hg['year'] >= 2024].groupby('year')}
+    test = pd.read_csv(PROC / 'discount_test.csv')
+    tests = [{'years': r['years'], 'disc': bool(r['discount in Apr–May']), 'am': r4(r['Apr–May sales growth %']),
+              'jm': r4(r['Jan–Mar sales growth %']), 'gap': r4(r['gap, points'])} for _, r in test.iterrows()]
+    sold = hg.pivot_table(index='year', columns='month', values='sold')
+    am25, am26 = sold.loc[2025, [4, 5]].sum(), sold.loc[2026, [4, 5]].sum()
+    counter = am25 * sold.loc[2026, [1, 2, 3]].sum() / sold.loc[2025, [1, 2, 3]].sum()
+    disc = {'need': r4((DISCOUNT['full_price'] / DISCOUNT['price'] - 1) * 100), 'extra': r4(am26 - counter),
+            'extra_pct': r4((am26 / counter - 1) * 100),
+            'rev_change_m': r4((am26 * DISCOUNT['price'] - counter * DISCOUNT['full_price']) / 1e6)}
+    ch19 = pd.read_csv(PROC / 'parks_change_2019_2024.csv', index_col=0)
+    ch19['v'] = (ch19['2024'] / ch19['2019'] - 1) * 100        # from the counts, not the rounded column
+    short = lambda p: p.replace(' Wildlife Reserve', ' WR')
+    park_change = [{'p': short(p), 'v': r4(r['v']), 'n': r4(r['2024'])} for p, r in ch19.sort_values('v').iterrows()]
+    h1p = pd.read_csv(PROC / 'parks_h1_change.csv', index_col=0)
+    h1p = h1p[h1p['2025'] >= 1000]
+    h1p['v'] = (h1p['2026'] / h1p['2025'] - 1) * 100
+    park_h1 = [{'p': short(p), 'v': r4(r['v']), 'a': r4(r['2025']), 'b': r4(r['2026'])} for p, r in h1p.sort_values('v').iterrows()]
+
+    data = clean({'h1': h1, 'tests': tests, 'disc': disc, 'park_change': park_change, 'park_h1': park_h1, 'purpose': purpose, 'regions': regions, 'markets': markets, 'receipts': receipts, 'recovery': recovery,
                   'parks_total': parks_total, 'parks_by': parks_by, 'cats': cats, 'season': season, 'months': MON,
                   'parks_monthly': parks_monthly, 'gorilla_year': gorilla_year, 'gorilla_month': gorilla_month, 'kpi': kpi})
     payload = json.dumps(data, separators=(',', ':'), allow_nan=False).replace('</', '<\\/')
