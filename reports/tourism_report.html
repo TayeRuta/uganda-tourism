@@ -1,0 +1,591 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Uganda Tourism</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap">
+<style>
+/* Layout: single 1080px report column — masthead, KPI strip, then numbered findings, each = headline + chart panel + takeaway */
+:root{
+  --bg:#f3f5f1; --panel:#ffffff; --ink:#132019; --ink-2:#4b5a51; --muted:#7a877f; --rule:#dfe4dd; --grid:#eceee9;
+  --accent:#16825a; --wet:#2b6c9e; --wet-deep:#1b4a70; --dry:#c4572e; --dry-deep:#8d3416; --neutral:#ecebe6;
+  --mam:#16825a; --son:#8a63d2; --band:#eef3ec; --chip:#e8eee6;
+  --f-display:"Noto Sans JP",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"Noto Sans JP",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Noto Sans JP",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1411; --panel:#161d19; --ink:#eaf0eb; --ink-2:#b2beb6; --muted:#859189; --rule:#27302b; --grid:#1f2723;
+  --accent:#3fae82; --wet:#4a8cc4; --wet-deep:#8cc0ec; --dry:#d9693f; --dry-deep:#f0a283; --neutral:#2a302c;
+  --mam:#2e9e74; --son:#9277e6; --band:#1a241f; --chip:#1d2622; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1411; --panel:#161d19; --ink:#eaf0eb; --ink-2:#b2beb6; --muted:#859189; --rule:#27302b; --grid:#1f2723;
+  --accent:#3fae82; --wet:#4a8cc4; --wet-deep:#8cc0ec; --dry:#d9693f; --dry-deep:#f0a283; --neutral:#2a302c;
+  --mam:#2e9e74; --son:#9277e6; --band:#1a241f; --chip:#1d2622; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;padding-inline:20px;padding-block:0 64px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.015em}
+p{margin:0}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* masthead */
+.mast{padding-block:48px 28px;display:grid;gap:18px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:flex;gap:14px;flex-wrap:wrap}
+.eyebrow span+span{color:var(--muted)}
+.mast h1{font-size:clamp(36px,6.2vw,68px);line-height:1.02;font-weight:800;max-width:15ch}
+.mast h1 em{font-style:normal;color:var(--accent)}
+.dek{font-size:clamp(17px,2vw,20px);color:var(--ink-2);max-width:62ch;line-height:1.5}
+
+/* KPI strip */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-block:28px 8px;border-top:2px solid var(--ink)}
+.kpi{padding:18px 18px 4px 0;display:grid;gap:6px;align-content:start}
+.kpi+.kpi{padding-left:18px;border-left:1px solid var(--rule)}
+.kpi .v{font-family:var(--f-display);font-weight:700;font-size:clamp(30px,3.6vw,42px);line-height:1;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:.45em;font-weight:500;color:var(--ink-2);margin-left:3px}
+.kpi .l{font-size:14px;color:var(--ink-2);line-height:1.4}
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:99px;background:var(--chip);color:var(--ink-2);max-width:100%;white-space:normal;line-height:1.3}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--muted);display:inline-block}
+.tag.dry i{background:var(--dry)} .tag.wet i{background:var(--wet)}
+
+/* summary */
+.summary{margin-block:36px 12px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px}
+.summary h2{font-size:14px;font-family:var(--f-mono);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+.summary ol{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:k}
+.summary li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;font-size:17px;line-height:1.5}
+.summary li::before{counter-increment:k;content:counter(k);font-family:var(--f-mono);font-size:13px;color:var(--accent);padding-top:3px}
+.summary b{font-weight:600}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-block:28px 8px}
+nav.toc a{font-size:13px;color:var(--ink-2);text-decoration:none;padding:6px 12px;border:1px solid var(--rule);border-radius:99px;background:var(--panel)}
+nav.toc a:hover,nav.toc a:focus-visible{border-color:var(--accent);color:var(--ink);outline:none}
+
+/* sections */
+section.f{padding-block:56px 8px;display:grid;gap:18px;scroll-margin-top:16px}
+.f-head{display:grid;gap:10px;max-width:760px}
+.f-num{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.f-head h2{font-size:clamp(24px,3.2vw,34px);line-height:1.15;font-weight:700}
+.f-head p{color:var(--ink-2);font-size:16.5px;max-width:66ch}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:20px 20px 14px;min-width:0}
+.panel-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px 24px;flex-wrap:wrap;margin-bottom:6px}
+.panel-title{font-weight:600;font-size:15px}
+.panel-sub{font-size:13px;color:var(--muted)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.sw.line{height:3px;border-radius:2px;width:18px}
+.sw.dash{height:0;border-top:2px dashed var(--ink-2);width:18px;border-radius:0}
+.chart{width:100%;position:relative}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.note{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;font-size:15px;color:var(--ink-2);max-width:760px;padding:14px 16px;border-radius:10px;background:var(--band)}
+.note b{color:var(--ink);font-weight:600}
+.note .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding-top:3px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+
+/* svg text */
+svg{display:block;overflow:visible}
+svg text{font-family:var(--f-body);fill:var(--muted);font-size:11.5px}
+svg .tick text{font-family:var(--f-mono);font-size:11px}
+svg .tick line{stroke:var(--grid)}
+svg .domain{display:none}
+svg .ann,svg .ann-strong{paint-order:stroke;stroke:var(--panel);stroke-width:4px;stroke-linejoin:round}
+svg .ann{fill:var(--ink-2);font-size:12px;font-weight:500}
+svg .ann-strong{fill:var(--ink);font-size:12.5px;font-weight:600}
+svg .lab{font-weight:600;font-size:12.5px}
+
+/* table */
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule)}
+th{font-weight:500;color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+td.r,th.r{text-align:right}
+tr.hi td{font-weight:600}
+.sev{display:inline-block;height:8px;border-radius:4px;background:var(--dry);vertical-align:middle}
+
+/* limits */
+.limits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.limits h3{font-size:18px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.limits ul{margin:0;padding-left:18px;display:grid;gap:8px;color:var(--ink-2);font-size:15px}
+.next{border-left:3px solid var(--accent);padding:4px 0 4px 18px;max-width:760px;font-size:17px}
+.next b{font-family:var(--f-display)}
+
+details{margin-top:8px}
+summary{cursor:pointer;font-weight:600;font-size:15px;padding:10px 0}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted);display:grid;gap:8px;max-width:820px}
+
+/* tooltip */
+#tip{position:fixed;pointer-events:none;z-index:20;background:var(--ink);color:var(--bg);padding:9px 12px;border-radius:8px;font-size:13px;line-height:1.45;min-width:120px;box-shadow:0 6px 24px rgba(0,0,0,.18);opacity:0;transition:opacity .12s}
+#tip .t{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+#tip .row{display:flex;justify-content:space-between;gap:16px}
+#tip .row b{font-family:var(--f-mono);font-weight:500}
+#tip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+
+@media (max-width:820px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi:nth-child(3){padding-left:0;border-left:0}
+  .kpi:nth-child(n+3){border-top:1px solid var(--rule);margin-top:6px}
+  .summary{grid-template-columns:1fr;gap:12px}
+  .grid2,.limits{grid-template-columns:1fr}
+}
+@media (max-width:480px){ body{padding-inline:16px} .panel{padding:16px 12px 10px} }
+@media (prefers-reduced-motion:reduce){#tip{transition:none}}
+/* regional additions */
+.score{width:100%;border-collapse:collapse;font-size:14px;min-width:760px}
+.score th{white-space:nowrap}
+.score td{padding:12px 8px;vertical-align:middle}
+.score th{padding-inline:8px}
+.score td.reg{font-weight:600;white-space:nowrap}
+.score td.reg small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.score tr.ref td{background:var(--band)}
+.bar-cell{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.score td .num{white-space:nowrap}
+.bar-cell i{display:block;height:10px;border-radius:0 4px 4px 0;background:var(--wet);opacity:.85}
+.bar-cell i.var{background:var(--accent)}
+.pill{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-mono);font-size:11px;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.pill.sig{background:var(--accent);color:var(--panel)}
+.pill.ns{background:var(--chip);color:var(--ink-2)}
+.pill.border{background:transparent;color:var(--ink-2);border:1px dashed var(--muted)}
+.mini{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.mini .panel{padding:14px 14px 8px}
+.mini .ph{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.mini .ph b{font-size:14px}
+.callout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.callout .panel{display:grid;gap:6px;align-content:start}
+.callout .big{font-family:var(--f-display);font-weight:700;font-size:28px;line-height:1.1}
+.callout p{font-size:14.5px;color:var(--ink-2)}
+@media (max-width:820px){.callout{grid-template-columns:1fr}}
+.mapnote{font-size:13px;color:var(--muted)}
+</style>
+<style id="formatting">
+/* Formatting: ink, white and grey with one vermilion origin line. Chart data colours are defined separately and unchanged. */
+:root{
+  --bg:#ffffff; --panel:#f6f5f2; --ink:#1a1a1a; --ink-2:#4a4a4a; --muted:#6b6b6b; --rule:#e6e4df; --grid:#ecebe7;
+  --accent:#1a1a1a; --band:#efeeea; --chip:#e6e4df; --origin:#d13b1f;
+  --f-display:"Noto Sans JP",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"Noto Sans JP",ui-sans-serif,system-ui,sans-serif;
+  --f-mono:"Noto Sans JP",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1a1a1a; --panel:#222221; --ink:#ffffff; --ink-2:#c9c8c4; --muted:#a3a29e; --rule:#34332f; --grid:#2b2a28;
+  --accent:#ffffff; --band:#262624; --chip:#2e2d2a; --origin:#ff7a5c}}
+:root[data-theme="dark"]{
+  --bg:#1a1a1a; --panel:#222221; --ink:#ffffff; --ink-2:#c9c8c4; --muted:#a3a29e; --rule:#34332f; --grid:#2b2a28;
+  --accent:#ffffff; --band:#262624; --chip:#2e2d2a; --origin:#ff7a5c}
+body{font-weight:400;font-feature-settings:"tnum" 1}
+.num,svg .tick text,.kpi .v,.big{font-variant-numeric:tabular-nums}
+/* Headings: Light, sentence case, ink */
+h1,h2,h3{letter-spacing:-.01em}
+.mast h1{font-weight:300;line-height:1.12;max-width:18ch}
+.mast h1 em{font-style:normal;color:var(--ink);font-weight:500}
+.f-head h2{font-weight:300}
+.limits h3,.who h3{font-weight:500}
+.panel-title,.summary b,.zone h3{font-weight:500}
+.kpi .v,.callout .big{font-weight:300}
+/* Labels: Medium, uppercase, tracked, grey */
+.eyebrow{color:var(--muted);font-weight:500;letter-spacing:.14em;font-size:11.5px}
+.eyebrow span+span{color:var(--muted)}
+.f-num,.summary h2,.note .k,th{color:var(--muted);font-weight:500;letter-spacing:.12em}
+.summary li::before{color:var(--muted);font-weight:500}
+/* The origin line: one per page, under the title, starting at the margin and running to the edge */
+.mast{position:relative;padding-top:64px;border-bottom:1px solid var(--rule)}
+/* Runs from the text margin to the right edge of the window, without widening the page */
+.mast::before{content:"";position:absolute;top:30px;left:0;right:calc((100% - 100vw) / 2);height:3px;background:var(--origin)}
+html{overflow-x:clip}
+.kpis{border-top:1px solid var(--ink)}
+/* Accents that were green become ink */
+.pill.sig{background:var(--ink);color:var(--bg)}
+.pill.border{border-color:var(--muted)}
+.conf.high{background:var(--ink);color:var(--bg)}
+.conf.med{border-color:var(--ink);color:var(--ink)}
+.next{border-left-color:var(--ink)}
+nav.toc a{background:var(--bg)}
+nav.toc a:hover,nav.toc a:focus-visible{border-color:var(--ink)}
+a{color:var(--ink)!important;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+nav.toc a{text-decoration:none}
+summary:focus-visible,.tabs button:focus-visible{outline-color:var(--ink)}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.panel{border-color:var(--rule)}
+</style>
+<div id="tip" role="status" aria-live="polite"></div>
+<style>
+:root{--c1:#2b6c9e;--c2:#c4572e;--c3:#3d8b5f;--c4:#8a5a9e;--c5:#b08a2e;--c6:#6b6b6b;--c7:#c9c5bc;--ug:#1a1a1a;--shade:#ebe9e4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c1:#5b9bd5;--c2:#ff7a5c;--c3:#6cc08e;--c4:#b98bd0;--c5:#d9b25a;--c6:#9a9a9a;--c7:#55514a;--ug:#f6f5f2;--shade:#2a2a2a}}
+:root[data-theme="dark"]{--c1:#5b9bd5;--c2:#ff7a5c;--c3:#6cc08e;--c4:#b98bd0;--c5:#d9b25a;--c6:#9a9a9a;--c7:#55514a;--ug:#f6f5f2;--shade:#2a2a2a}
+.conf{display:inline-flex;align-items:center;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.conf.high{background:var(--ink);color:var(--bg)}
+.conf.med{border:1.5px solid var(--ink);color:var(--ink)}
+.conf.low{background:var(--chip);color:var(--ink-2)}
+.kpi .conf{justify-self:start}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.who .panel{display:grid;gap:10px;align-content:start}
+.who h3{font-size:19px;font-weight:500}
+.who ul{margin:0;padding-left:18px;display:grid;gap:7px;font-size:15px;color:var(--ink-2)}
+.who ul b{color:var(--ink);font-weight:600}
+.tbl td{vertical-align:top}
+.tbl td:first-child{font-weight:600;min-width:200px}
+.tbl td.ev{color:var(--ink-2);font-size:13.5px}
+@media (max-width:820px){.who,.duo{grid-template-columns:1fr}}
+@media (max-width:480px){.note{grid-template-columns:1fr;gap:4px}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow"><span>Tourism</span><span>Arrivals, parks, gorillas, earnings</span><span>2012–2024</span></div>
+  <h1>Uganda's tourism: <em>who comes, when, and what goes unsold</em></h1>
+  <p class="dek">Uganda counts about 1.4 million tourist arrivals a year, but only a fifth come on holiday. This report separates holiday tourism from regional travel, follows national park visits and gorilla permits month by month, compares Uganda's recovery with its peers, and shows where the official numbers disagree.</p>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><div class="v num" id="k-leisure">19<small>%</small></div><div class="l">Of 2024's tourist arrivals came for leisure and holidays; most were regional visitors</div><span class="conf high">High confidence</span></div>
+  <div class="kpi"><div class="v num" id="k-parks">437<small>k</small></div><div class="l">National park visits in 2024, a record, 35% above 2019, mostly from domestic growth</div><span class="conf high">High confidence</span></div>
+  <div class="kpi"><div class="v num" id="k-gorilla">58<small>%</small></div><div class="l">Of gorilla permits sold in 2024, leaving about 30,000 unsold, mostly in the wet months</div><span class="conf high">High confidence</span></div>
+  <div class="kpi"><div class="v num" id="k-rec">94<small>%</small></div><div class="l">Of 2019 visitor earnings regained by 2023, behind Kenya, Rwanda and Tanzania</div><span class="conf med">Medium confidence</span></div>
+</div>
+
+<div class="summary">
+  <h2>Key takeaways</h2>
+  <ol>
+    <li><span><b>Most "tourists" are not on holiday.</b> In 2024, 19% came for leisure; the rest visited friends and family or came for business, study or health. Nine in ten came from Africa, and Kenya and Rwanda alone sent 63%. <span class="conf high">High</span></span></li>
+    <li><span><b>The arrival counts are not comparable over time.</b> The system changed in 2019, and the published 2019 figures range from 657,000 to 1.54 million depending on source and definition. <span class="conf high">High</span></span></li>
+    <li><span><b>National parks had a record 2024, but the growth is domestic.</b> Visits were 35% above 2019; foreign non-resident visitors were only 4% above. Ugandan students and East Africans drove the rest. <span class="conf high">High</span></span></li>
+    <li><span><b>Visitors come in July and August.</b> Those two months bring 29% of park visits, and about 90% of gorilla permits sell; March brings 5% of visits. The link to rainfall is weak; holiday calendars may matter as much. <span class="conf med">Medium</span></span></li>
+    <li><span><b>Gorilla capacity outgrew demand.</b> Permits rose 26% in 2024 but sales only 7%, so the share sold fell from 69% to 58%. 55% of unsold permits were in the four wettest months. <span class="conf high">High</span></span></li>
+    <li><span><b>Visitor earnings recovered more slowly than the neighbours'</b>: 94% of 2019 in 2023, against 100% for Kenya, 123% for Rwanda and 130% for Tanzania. <span class="conf med">Medium</span></span></li>
+  </ol>
+</div>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#who">Who comes</a><a href="#earnings">Earnings</a><a href="#parks">Parks</a><a href="#when">When</a><a href="#gorillas">Gorillas</a><a href="#shocks">Shocks</a><a href="#meaning">What it means</a><a href="#methods">Methods</a>
+</nav>
+
+<section class="f" id="who">
+  <div class="f-head">
+    <div class="f-num">01 · Who comes</div>
+    <h2>A fifth on holiday, nine in ten from Africa</h2>
+    <p>Tourist arrivals by purpose of visit. 2012–2016 come from arrival cards (Uganda Bureau of Statistics); 2020–2024 from the PISCES immigration system (Ministry of Tourism). The two are not directly comparable, and no breakdown is published for 2017–2019.</p>
+  </div>
+  <div class="panel">
+    <div class="panel-top"><div><div class="panel-title">Tourist arrivals by purpose, thousands</div><div class="panel-sub">Hover a year · gap: change of counting system</div></div>
+      <div class="legend"><span><i class="sw" style="background:var(--c2)"></i>Leisure and holiday</span><span><i class="sw" style="background:var(--c1)"></i>Business</span><span><i class="sw" style="background:var(--c3)"></i>Friends and relatives</span><span><i class="sw" style="background:var(--c7)"></i>Other</span></div></div>
+    <div class="chart" id="c-purpose"></div>
+  </div>
+  <div class="duo">
+    <div class="panel"><div class="panel-top"><div><div class="panel-title">Arrivals from outside Africa, thousands</div><div class="panel-sub">10% of all arrivals in 2024</div></div></div><div class="chart" id="c-outside"></div></div>
+    <div class="panel"><div class="panel-top"><div><div class="panel-title">Top overseas markets, 2024</div><div class="panel-sub">Arrivals</div></div></div><div class="chart" id="c-markets"></div></div>
+  </div>
+  <div class="note"><span class="k">Data break</span><span>Three published counts of 2019 arrivals: <b>1.54 million</b> overnight visitors (as reported to UN Tourism), <b>1.04 million</b> total arrivals at eight border posts, and <b>657,000</b> non-resident visitors (both Uganda Bureau of Statistics, which says 2019 cannot be compared with earlier years). Headline arrival trends across 2019 should not be trusted.</span></div>
+</section>
+
+<section class="f" id="earnings">
+  <div class="f-head">
+    <div class="f-num">02 · Earnings</div>
+    <h2>A slower recovery than the neighbours</h2>
+    <p>Travel receipts from the balance of payments (UN Tourism), the most comparable measure across countries. They count all visitor spending, including students, patients and business travellers, so they measure the visitor economy, not holiday tourism alone.</p>
+  </div>
+  <div class="duo">
+    <div class="panel"><div class="panel-top"><div><div class="panel-title">Travel receipts, % of 2019</div><div class="panel-sub">Hover a year</div></div></div>
+      <div class="legend" id="l-rec"></div><div class="chart" id="c-rec"></div></div>
+    <div class="panel"><div class="panel-top"><div><div class="panel-title">2023 receipts as % of 2019</div><div class="panel-sub">Ten African tourism economies</div></div></div><div class="chart" id="c-rec23"></div></div>
+  </div>
+  <div class="note"><span class="k">Reading</span><span>Uganda had regained 94% of its 2019 visitor earnings by 2023, behind its East African neighbours and ahead of southern Africa's safari destinations. The Ministry of Tourism reports US$1.28 billion for 2024 and US$1.62 billion for 2025, which would put Uganda above 2019, but those years are not yet in the comparable series.</span></div>
+</section>
+
+<section class="f" id="parks">
+  <div class="f-head">
+    <div class="f-num">03 · National parks</div>
+    <h2>A record year, built on domestic visitors</h2>
+    <p>Uganda Wildlife Authority gate counts: the same source and definition since 2012, the most consistent tourism series available.</p>
+  </div>
+  <div class="duo">
+    <div class="panel"><div class="panel-top"><div><div class="panel-title">National park visits, thousands</div><div class="panel-sub">Hover a year</div></div></div><div class="chart" id="c-parks"></div></div>
+    <div class="panel"><div class="panel-top"><div><div class="panel-title">Visits by park, thousands</div><div class="panel-sub">Six most-visited parks in 2024</div></div></div>
+      <div class="legend" id="l-byp"></div><div class="chart" id="c-byp"></div></div>
+  </div>
+  <div class="panel">
+    <div class="panel-top"><div><div class="panel-title">Park visitors by category, thousands</div><div class="panel-sub">2018–2019: foreign non-residents only are published</div></div>
+      <div class="legend"><span><i class="sw" style="background:var(--c2)"></i>Foreign non-residents</span><span><i class="sw" style="background:var(--c5)"></i>Foreign residents</span><span><i class="sw" style="background:var(--c1)"></i>East African residents</span><span><i class="sw" style="background:var(--c3)"></i>Students</span><span><i class="sw" style="background:var(--c7)"></i>Others</span></div></div>
+    <div class="chart" id="c-cat"></div>
+  </div>
+  <div class="note"><span class="k">Reading</span><span>Park visits reached 437,000 in 2024, 35% above 2019. Foreign non-resident visitors (160,000) were only 4% above their 2019 level; Ugandan students (120,000) and East African residents (106,000) drove the growth. Murchison Falls, Queen Elizabeth and Bwindi take two-thirds to three-quarters of all visits every year.</span></div>
+</section>
+
+<section class="f" id="when">
+  <div class="f-head">
+    <div class="f-num">04 · When</div>
+    <h2>Two busy months</h2>
+    <p>Average monthly patterns: park visits (2015–2019 and 2022–2024), gorilla permits sold (2023–2024), all arrivals (2023–2024), and rainfall in Western Uganda, where most gorilla and savannah parks lie (1991–2020).</p>
+  </div>
+  <div class="panel">
+    <div class="panel-top"><div><div class="panel-title">The tourism year</div><div class="panel-sub">Bars: Western rainfall (right axis) · hover a month</div></div>
+      <div class="legend"><span><i class="sw line" style="background:var(--ug)"></i>Park visits, % of year (×10)</span><span><i class="sw line" style="background:var(--c2)"></i>Gorilla permits sold, %</span><span><i class="sw line" style="background:var(--c6)"></i>All arrivals, % of year (×10)</span><span><i class="sw" style="background:var(--c1);opacity:.3"></i>Rain, mm</span></div></div>
+    <div class="chart" id="c-season"></div>
+  </div>
+  <div class="note"><span class="k">Reading</span><span>July and August bring 29% of the year's park visits, and about 90% of gorilla permits sold in 2024; March brings 5% of visits. The quietest months include the south-west's wettest, but August is busy despite rain, and across the year the link to rainfall is weak (rank correlation −0.18 for park visits, −0.48 for gorilla bookings, neither significant). The peak matches European and North American summer holidays at least as well. Total arrivals barely vary by month, because most arrivals are regional visitors.</span></div>
+</section>
+
+<section class="f" id="gorillas">
+  <div class="f-head">
+    <div class="f-num">05 · Gorillas</div>
+    <h2>More permits, the same demand</h2>
+    <p>Gorilla tracking permits available and sold (Uganda Wildlife Authority). A permit costs US$800 for foreign non-residents, US$700 for foreign residents, US$500 for the rest of Africa and UGX 300,000 for East Africans (2024–2026 tariff).</p>
+  </div>
+  <div class="duo">
+    <div class="panel"><div class="panel-top"><div><div class="panel-title">Permits available and sold, thousands</div><div class="panel-sub">Hover a year</div></div>
+      <div class="legend"><span><i class="sw" style="background:var(--c7)"></i>Available</span><span><i class="sw" style="background:var(--c2)"></i>Sold</span></div></div><div class="chart" id="c-gy"></div></div>
+    <div class="panel"><div class="panel-top"><div><div class="panel-title">Share of permits sold by month, %</div><div class="panel-sub">Hover a month</div></div>
+      <div class="legend"><span><i class="sw line" style="background:var(--c7)"></i>2022</span><span><i class="sw line" style="background:var(--c6)"></i>2023</span><span><i class="sw line" style="background:var(--c2)"></i>2024</span></div></div><div class="chart" id="c-gm"></div></div>
+  </div>
+  <div class="callout" id="g-cards"></div>
+  <div class="note"><span class="k">Reading</span><span>Capacity rose 26% in 2024 while sales rose 7%, so the extra permits went mostly unsold, and most of those were in the wet months. Demand in the low season, not the number of permits, is the constraint. In July and August 2023 recorded sales exceed the listed permits by up to a third (134% in August), an inconsistency in the source that also inflates 2023's 69%. Chimpanzee tracking sold 44% of permits in 2024.</span></div>
+</section>
+
+<section class="f" id="shocks">
+  <div class="f-head">
+    <div class="f-num">06 · Shocks</div>
+    <h2>COVID-19 hit hard; later shocks left little mark nationally</h2>
+  </div>
+  <div class="panel">
+    <div class="panel-top"><div><div class="panel-title">National park visits by month, thousands</div><div class="panel-sub">Hover a month · shaded: Ebola outbreak, Sep 2022 – Jan 2023</div></div></div>
+    <div class="chart" id="c-pm"></div>
+  </div>
+  <div class="note"><span class="k">Reading</span><span>COVID-19 cut park visits by 69% in 2020; they passed 2019 levels only in 2022. The Ebola outbreak of September 2022 – January 2023 left no clear mark: park visits in October–December 2022 ran at the same ratio to 2023 as the rest of that year. Queen Elizabeth National Park, where two foreign tourists and their guide were killed in October 2023, had a record 2024 (+33%). National and annual figures can hide short or local effects, so these are weak tests.</span></div>
+</section>
+
+<section class="f" id="meaning">
+  <div class="f-head"><div class="f-num">07 · What it means</div><h2>Fill the low season, grow holiday travel, fix the counts</h2></div>
+  <div class="who">
+    <div class="panel"><span class="tag dry"><i></i>Operators and investors</span><h3>The low season is the opportunity</h3><ul>
+      <li><b>About 30,000 gorilla permits went unsold in 2024,</b> worth up to US$24 million at the foreign rate, over half in March–May and November.</li>
+      <li>July–August is about 90% sold; most room to grow is in the shoulder and wet months.</li>
+      <li>The domestic and student market is now the fastest-growing park segment.</li></ul></div>
+    <div class="panel"><span class="tag wet"><i></i>Government and partners</span><h3>Measure holiday tourism directly</h3><ul>
+      <li><b>Leisure visitors (265,000 in 2024)</b> are a better target than total arrivals, most of which are regional travel.</li>
+      <li>Overseas arrivals are small (137,000) and fell from Europe in 2024.</li>
+      <li>Recovery lags Kenya, Rwanda and Tanzania on comparable earnings.</li></ul></div>
+    <div class="panel"><span class="tag dry"><i></i>Statisticians</span><h3>One consistent series</h3><ul>
+      <li><b>Reconcile the 2019 counts</b> and publish a back-cast series across the switch to PISCES.</li>
+      <li>Publish purpose of visit for 2017–2019.</li>
+      <li>Fix the July–August gorilla permit figures and extend the hotel survey to safari lodges.</li></ul></div>
+  </div>
+  <div class="panel">
+    <div class="scroll"><table class="score tbl" style="min-width:720px"><thead><tr><th>Finding</th><th>Evidence</th><th>Confidence</th></tr></thead><tbody>
+      <tr><td>A fifth of arrivals come on holiday</td><td class="ev">Purpose of visit, PISCES immigration data, 2024</td><td><span class="conf high">High</span></td></tr>
+      <tr><td>Park growth since 2019 is mainly domestic</td><td class="ev">Uganda Wildlife Authority gate counts by category; 2019 foreign figure from a chart label confirmed by the text</td><td><span class="conf high">High</span></td></tr>
+      <tr><td>Gorilla capacity outgrew demand in 2024</td><td class="ev">Permits available and sold by month; totals checked against the source</td><td><span class="conf high">High</span></td></tr>
+      <tr><td>Seasonality follows holidays as much as rain</td><td class="ev">Twelve monthly averages; weak, non-significant correlation with rainfall</td><td><span class="conf med">Medium</span></td></tr>
+      <tr><td>Earnings recovered more slowly than neighbours'</td><td class="ev">UN Tourism balance-of-payments travel receipts to 2023; includes non-holiday spending</td><td><span class="conf med">Medium</span></td></tr>
+    </tbody></table></div>
+  </div>
+</section>
+
+<section class="f" id="methods">
+  <div class="f-head"><div class="f-num">08 · Methods and limits</div><h2>How this was done</h2></div>
+  <div class="limits">
+    <div class="panel"><h3><span class="tag wet"><i></i>Method</span></h3><ul>
+      <li>Tables extracted from the Ministry of Tourism's Statistical Abstract 2025 and the Uganda Bureau of Statistics' Statistical Abstracts 2017 and 2020, each checked against its printed totals</li>
+      <li>Benchmark from UN Tourism inbound travel receipts (balance of payments), 2015–2023</li>
+      <li>Seasonality as average shares of the year by month; rank correlation with regional rainfall from the rainfall project</li>
+      <li>Shocks compared with the same months of the following year</li></ul></div>
+    <div class="panel"><h3><span class="tag dry"><i></i>Limits</span></h3><ul>
+      <li>Arrival counts change basis in 2019; 2017–2019 purpose of visit is not published</li>
+      <li>Most series are annual and short (2012–2024 at best), so few formal tests are possible</li>
+      <li>Hotel occupancy appears to cover mainly urban hotels and shows little seasonality</li>
+      <li>Gorilla permit sales in July–August exceed listed permits in the source</li>
+      <li>Unsold permit value is an upper bound at the foreign non-resident price</li></ul></div>
+  </div>
+</section>
+
+<footer>
+  <p><b>Sources.</b> Ministry of Tourism, Wildlife and Antiquities, Statistical Abstract 2025. Uganda Bureau of Statistics, Statistical Abstracts 2017 and 2020. Uganda Wildlife Authority, conservation tariff 2024–2026. UN Tourism, inbound tourism data. CHIRPS rainfall, via the Uganda rainfall analysis.</p>
+  <p><b>Related.</b> <a href="https://tayeruta.github.io/uganda-agriculture/">Uganda agriculture synthesis</a> · <a href="https://tayeruta.github.io/uganda-rainfall-analysis/reports/synthesis_report.html">Uganda rainfall</a></p>
+  <p><b>Reproducibility.</b> Every number on this page comes from <span class="num">notebooks/01_tourism.ipynb</span>, <span class="num">scripts/extract_tables.py</span> and <span class="num">scripts/build_report_data.py</span>.</p>
+</footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script id="report-data" type="application/json">{"purpose":[{"y":2012,"Leisure and holiday":148000.0,"Business and professional":205000.0,"Visiting friends and relatives":383000.0,"Other":461000.0,"src":"UBOS 2017 (arrival cards)"},{"y":2013,"Leisure and holiday":188000.0,"Business and professional":223000.0,"Visiting friends and relatives":528000.0,"Other":267000.0,"src":"UBOS 2017 (arrival cards)"},{"y":2014,"Leisure and holiday":220000.0,"Business and professional":232000.0,"Visiting friends and relatives":441000.0,"Other":373000.0,"src":"UBOS 2017 (arrival cards)"},{"y":2015,"Leisure and holiday":208000.0,"Business and professional":322000.0,"Visiting friends and relatives":453000.0,"Other":320000.0,"src":"UBOS 2017 (arrival cards)"},{"y":2016,"Leisure and holiday":237000.0,"Business and professional":290000.0,"Visiting friends and relatives":499000.0,"Other":297000.0,"src":"UBOS 2017 (arrival cards)"},{"y":2020,"Leisure and holiday":10811.0,"Business and professional":302871.0,"Visiting friends and relatives":64602.0,"Other":94801.0,"src":"MTWA 2025 (PISCES immigration system)"},{"y":2021,"Leisure and holiday":46165.0,"Business and professional":128236.0,"Visiting friends and relatives":169272.0,"Other":169272.0,"src":"MTWA 2025 (PISCES immigration system)"},{"y":2022,"Leisure and holiday":95394.0,"Business and professional":297453.0,"Visiting friends and relatives":311414.0,"Other":110247.0,"src":"MTWA 2025 (PISCES immigration system)"},{"y":2023,"Leisure and holiday":199716.0,"Business and professional":336848.0,"Visiting friends and relatives":373782.0,"Other":363864.0,"src":"MTWA 2025 (PISCES immigration system)"},{"y":2024,"Leisure and holiday":264746.0,"Business and professional":341418.0,"Visiting friends and relatives":400723.0,"Other":365008.0,"src":"MTWA 2025 (PISCES immigration system)"}],"regions":{"2020":{"Africa":421169.0,"outside":50756.0,"total":473085.0},"2021":{"Africa":460432.0,"outside":48239.0,"total":512717.0},"2022":{"Africa":714677.0,"outside":90670.0,"total":814508.0},"2023":{"Africa":1136233.0,"outside":126132.0,"total":1274210.0},"2024":{"Africa":1223678.0,"outside":137411.0,"total":1371895.0}},"markets":[{"m":"India","v":34208},{"m":"USA","v":16237},{"m":"China","v":10961},{"m":"UK","v":10179},{"m":"Canada","v":9688},{"m":"Pakistan","v":5208},{"m":"Bangladesh","v":4897},{"m":"Germany","v":4223},{"m":"France","v":3169},{"m":"Ireland","v":2702}],"receipts":{"Uganda":[{"y":2015,"v":1037.0},{"y":2016,"v":1102.0},{"y":2017,"v":941.0},{"y":2018,"v":1506.0},{"y":2019,"v":1385.0},{"y":2020,"v":562.1},{"y":2021,"v":984.3},{"y":2022,"v":1070.87},{"y":2023,"v":1302.71}],"Kenya":[{"y":2015,"v":724.0},{"y":2016,"v":824.0},{"y":2017,"v":916.0},{"y":2018,"v":1072.0},{"y":2019,"v":1007.0},{"y":2020,"v":541.2534},{"y":2021,"v":843.9046},{"y":2022,"v":1109.5945},{"y":2023,"v":1005.3408}],"Tanzania":[{"y":2015,"v":1902.0},{"y":2016,"v":2132.0},{"y":2017,"v":2250.0},{"y":2018,"v":2449.0},{"y":2019,"v":2604.4},{"y":2020,"v":714.5383},{"y":2021,"v":1310.34},{"y":2022,"v":2527.7656},{"y":2023,"v":3373.8252}],"Rwanda":[{"y":2015,"v":338.0},{"y":2016,"v":363.0},{"y":2017,"v":381.0},{"y":2018,"v":392.0},{"y":2019,"v":458.0},{"y":2020,"v":120.4574},{"y":2021,"v":149.8966},{"y":2022,"v":400.2469},{"y":2023,"v":563.8762}],"Ethiopia":[{"y":2015,"v":405.0},{"y":2016,"v":347.0},{"y":2017,"v":436.0},{"y":2018,"v":968.0},{"y":2019,"v":786.0},{"y":2020,"v":1032.8189},{"y":2021,"v":965.0758},{"y":2022,"v":1174.6151},{"y":2023,"v":1103.9423}],"Zambia":[{"y":2015,"v":660.0},{"y":2016,"v":683.0},{"y":2017,"v":653.0},{"y":2018,"v":742.0},{"y":2019,"v":819.0},{"y":2020,"v":411.5564},{"y":2021,"v":392.9969},{"y":2022,"v":828.5106},{"y":2023,"v":800.6622}],"Namibia":[{"y":2015,"v":465.0},{"y":2016,"v":224.0},{"y":2017,"v":341.0},{"y":2018,"v":380.0},{"y":2019,"v":349.0},{"y":2020,"v":118.0677},{"y":2021,"v":128.4978},{"y":2022,"v":276.7941},{"y":2023,"v":346.8188}],"South Africa":[{"y":2015,"v":8259.0},{"y":2016,"v":7919.0},{"y":2017,"v":8817.0},{"y":2018,"v":8989.0},{"y":2019,"v":8390.0},{"y":2020,"v":2607.4522},{"y":2021,"v":2108.1731},{"y":2022,"v":4738.3886},{"y":2023,"v":5680.6693}],"Botswana":[{"y":2015,"v":533.0},{"y":2016,"v":503.0},{"y":2017,"v":542.0},{"y":2018,"v":582.0},{"y":2019,"v":705.0},{"y":2020,"v":114.6354},{"y":2021,"v":206.8315},{"y":2022,"v":349.0228},{"y":2023,"v":393.3981}],"Zimbabwe":[{"y":2015,"v":175.0},{"y":2016,"v":177.0},{"y":2017,"v":149.0},{"y":2018,"v":182.0},{"y":2019,"v":279.0},{"y":2020,"v":62.602},{"y":2021,"v":16.1749},{"y":2022,"v":263.58},{"y":2023,"v":155.15}]},"recovery":{"Uganda":94.0585,"Kenya":99.8352,"Tanzania":129.5433,"Rwanda":123.1171,"Ethiopia":140.4507,"Zambia":97.761,"Namibia":99.375,"South Africa":67.7076,"Botswana":55.8012,"Zimbabwe":55.6093},"parks_total":[{"y":2012,"v":182149},{"y":2013,"v":213950},{"y":2014,"v":202885},{"y":2015,"v":215558},{"y":2016,"v":245725},{"y":2017,"v":285671},{"y":2018,"v":325345},{"y":2019,"v":323861},{"y":2020,"v":101331},{"y":2021,"v":189988},{"y":2022,"v":367869},{"y":2023,"v":387914},{"y":2024,"v":436767}],"parks_by":{"Murchison Falls":[{"y":2012,"v":58172.0},{"y":2013,"v":69193.0},{"y":2014,"v":58769.0},{"y":2015,"v":65366.0},{"y":2016,"v":75360.0},{"y":2017,"v":93256.0},{"y":2018,"v":102305.0},{"y":2019,"v":103665.0},{"y":2020,"v":33194.0},{"y":2021,"v":78655.0},{"y":2022,"v":146649.0},{"y":2023,"v":141335.0},{"y":2024,"v":139304.0}],"Queen Elizabeth":[{"y":2012,"v":60803.0},{"y":2013,"v":70798.0},{"y":2014,"v":66844.0},{"y":2015,"v":72964.0},{"y":2016,"v":85905.0},{"y":2017,"v":81660.0},{"y":2018,"v":86875.0},{"y":2019,"v":77995.0},{"y":2020,"v":24362.0},{"y":2021,"v":40488.0},{"y":2022,"v":95340.0},{"y":2023,"v":93970.0},{"y":2024,"v":124645.0}],"Lake Mburo":[{"y":2012,"v":22927.0},{"y":2013,"v":14068.0},{"y":2014,"v":26980.0},{"y":2015,"v":24979.0},{"y":2016,"v":26012.0},{"y":2017,"v":30403.0},{"y":2018,"v":35206.0},{"y":2019,"v":33188.0},{"y":2020,"v":10727.0},{"y":2021,"v":18741.0},{"y":2022,"v":28540.0},{"y":2023,"v":36970.0},{"y":2024,"v":44043.0}],"Bwindi Impenetrable":[{"y":2012,"v":18259.0},{"y":2013,"v":21695.0},{"y":2014,"v":20611.0},{"y":2015,"v":16476.0},{"y":2016,"v":19522.0},{"y":2017,"v":26576.0},{"y":2018,"v":37514.0},{"y":2019,"v":36341.0},{"y":2020,"v":9829.0},{"y":2021,"v":15736.0},{"y":2022,"v":32628.0},{"y":2023,"v":41412.0},{"y":2024,"v":43364.0}],"Semliki":[{"y":2012,"v":3591.0},{"y":2013,"v":5752.0},{"y":2014,"v":4824.0},{"y":2015,"v":10389.0},{"y":2016,"v":8214.0},{"y":2017,"v":12850.0},{"y":2018,"v":16628.0},{"y":2019,"v":22577.0},{"y":2020,"v":7322.0},{"y":2021,"v":14403.0},{"y":2022,"v":26631.0},{"y":2023,"v":31114.0},{"y":2024,"v":42545.0}],"Kibale":[{"y":2012,"v":10372.0},{"y":2013,"v":10834.0},{"y":2014,"v":12097.0},{"y":2015,"v":10463.0},{"y":2016,"v":11760.0},{"y":2017,"v":15728.0},{"y":2018,"v":18843.0},{"y":2019,"v":19521.0},{"y":2020,"v":5558.0},{"y":2021,"v":7789.0},{"y":2022,"v":15641.0},{"y":2023,"v":18848.0},{"y":2024,"v":19748.0}]},"cats":[{"y":2016,"East African Residents":62142.0,"Foreign Non Residents":95949.0,"Foreign Residents":15778.0,"Others":1557.0,"Students":70299.0},{"y":2018,"East African Residents":null,"Foreign Non Residents":150931.0,"Foreign Residents":null,"Others":null,"Students":null},{"y":2019,"East African Residents":null,"Foreign Non Residents":153911.0,"Foreign Residents":null,"Others":null,"Students":null},{"y":2020,"East African Residents":44581.0,"Foreign Non Residents":42714.0,"Foreign Residents":8611.0,"Others":1596.0,"Students":3829.0},{"y":2021,"East African Residents":89635.0,"Foreign Non Residents":56112.0,"Foreign Residents":13731.0,"Others":25238.0,"Students":5272.0},{"y":2022,"East African Residents":97357.0,"Foreign Non Residents":122316.0,"Foreign Residents":13060.0,"Others":71785.0,"Students":63351.0},{"y":2023,"East African Residents":105486.0,"Foreign Non Residents":144579.0,"Foreign Residents":12310.0,"Others":54129.0,"Students":71410.0},{"y":2024,"East African Residents":106405.0,"Foreign Non Residents":160003.0,"Foreign Residents":10152.0,"Others":39864.0,"Students":120343.0}],"season":{"parks":[6.6956,5.6229,4.966,5.7253,6.5445,8.187,14.2371,15.1704,8.9216,7.9632,6.5722,9.3941],"gorilla":[63.1442,74.4364,33.6948,23.0172,30.2836,74.0517,101.5213,108.2661,85.2652,59.3017,44.3277,55.0953],"arrivals":[7.9385,7.2921,7.4469,7.6957,8.0408,8.2485,8.9501,9.8019,8.3079,8.3544,8.3079,9.6154],"rain":[43.3762,48.8407,108.2755,150.9975,105.8885,56.3818,49.4229,100.7895,123.1194,153.1849,129.0766,77.2284]},"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"parks_monthly":[{"d":"2019-01","v":23977},{"d":"2019-02","v":18686},{"d":"2019-03","v":16785},{"d":"2019-04","v":19370},{"d":"2019-05","v":25941},{"d":"2019-06","v":24752},{"d":"2019-07","v":43164},{"d":"2019-08","v":49866},{"d":"2019-09","v":25608},{"d":"2019-10","v":27205},{"d":"2019-11","v":20623},{"d":"2019-12","v":27884},{"d":"2018-01","v":21564},{"d":"2018-02","v":20226},{"d":"2018-03","v":17187},{"d":"2018-04","v":17634},{"d":"2018-05","v":20967},{"d":"2018-06","v":25081},{"d":"2018-07","v":44752},{"d":"2018-08","v":52284},{"d":"2018-09","v":26923},{"d":"2018-10","v":27017},{"d":"2018-11","v":21987},{"d":"2018-12","v":29723},{"d":"2017-01","v":18574},{"d":"2017-02","v":15296},{"d":"2017-03","v":12659},{"d":"2017-04","v":16386},{"d":"2017-05","v":17248},{"d":"2017-06","v":23285},{"d":"2017-07","v":39570},{"d":"2017-08","v":42555},{"d":"2017-09","v":24908},{"d":"2017-10","v":24567},{"d":"2017-11","v":21759},{"d":"2017-12","v":28864},{"d":"2016-01","v":15149},{"d":"2016-02","v":11335},{"d":"2016-03","v":12274},{"d":"2016-04","v":9171},{"d":"2016-05","v":13556},{"d":"2016-06","v":21178},{"d":"2016-07","v":39672},{"d":"2016-08","v":32906},{"d":"2016-09","v":30044},{"d":"2016-10","v":22356},{"d":"2016-11","v":16338},{"d":"2016-12","v":21746},{"d":"2015-01","v":12032},{"d":"2015-02","v":11029},{"d":"2015-03","v":10474},{"d":"2015-04","v":14839},{"d":"2015-05","v":14395},{"d":"2015-06","v":19562},{"d":"2015-07","v":31683},{"d":"2015-08","v":31975},{"d":"2015-09","v":16044},{"d":"2015-10","v":18383},{"d":"2015-11","v":14318},{"d":"2015-12","v":20824},{"d":"2020-01","v":26028},{"d":"2021-01","v":8520},{"d":"2022-01","v":23402},{"d":"2023-01","v":28548},{"d":"2024-01","v":33036},{"d":"2020-02","v":24584},{"d":"2021-02","v":7400},{"d":"2022-02","v":20242},{"d":"2023-02","v":23325},{"d":"2024-02","v":27942},{"d":"2020-03","v":9558},{"d":"2021-03","v":9127},{"d":"2022-03","v":17374},{"d":"2023-03","v":19788},{"d":"2024-03","v":22506},{"d":"2020-04","v":0},{"d":"2021-04","v":12752},{"d":"2022-04","v":23903},{"d":"2023-04","v":25220},{"d":"2024-04","v":22056},{"d":"2020-05","v":35},{"d":"2021-05","v":13737},{"d":"2022-05","v":20695},{"d":"2023-05","v":28915},{"d":"2024-05","v":28782},{"d":"2020-06","v":1012},{"d":"2021-06","v":12162},{"d":"2022-06","v":33633},{"d":"2023-06","v":27869},{"d":"2024-06","v":34822},{"d":"2020-07","v":3641},{"d":"2021-07","v":12224},{"d":"2022-07","v":53987},{"d":"2023-07","v":52563},{"d":"2024-07","v":60680},{"d":"2020-08","v":4242},{"d":"2021-08","v":18243},{"d":"2022-08","v":57965},{"d":"2023-08","v":60692},{"d":"2024-08","v":67138},{"d":"2020-09","v":3769},{"d":"2021-09","v":16036},{"d":"2022-09","v":31698},{"d":"2023-09","v":33596},{"d":"2024-09","v":41600},{"d":"2020-10","v":6472},{"d":"2021-10","v":18755},{"d":"2022-10","v":24170},{"d":"2023-10","v":28838},{"d":"2024-10","v":29573},{"d":"2020-11","v":5485},{"d":"2021-11","v":19684},{"d":"2022-11","v":22208},{"d":"2023-11","v":23560},{"d":"2024-11","v":28100},{"d":"2020-12","v":16505},{"d":"2021-12","v":41348},{"d":"2022-12","v":38592},{"d":"2023-12","v":35000},{"d":"2024-12","v":40532}],"gorilla_year":[{"y":2020,"a":57824,"s":11346},{"y":2021,"a":56576,"s":8029},{"y":2022,"a":56576,"s":24438},{"y":2023,"a":56576,"s":38836},{"y":2024,"a":71372,"s":41468}],"gorilla_month":{"2022":[7.651,25.641,14.0819,5.9868,8.1494,35.0877,89.2473,101.5715,86.9231,52.2126,36.8162,50.9926],"2023":[59.1398,69.7115,32.2167,27.3684,34.2105,79.2982,115.8809,133.5194,97.3291,67.804,46.0043,58.9123],"2024":[66.3978,78.143,34.8958,19.6429,27.2383,69.983,90.0922,88.1666,75.6633,52.5346,42.9932,52.0573]},"kpi":{"leisure_share":19.2978,"leisure_2024":264746.0,"parks_2024":436767,"parks_vs_2019":134.8625,"fnr_vs_2019":103.9581,"gorilla_sold_2024":58.1012,"gorilla_sold_2023":68.6439,"unsold_2024":29904,"unsold_value_m":23.9232,"wet_unsold_share":54.7519,"chimp_sold_2024":43.5489,"recovery_uganda":94.0585,"top3_min":66.4999,"top3_max":75.5719,"jul_aug":29.4075,"march":4.966,"africa_share":89.1962,"outside_2024":137411.0}}</script>
+<script>
+(function(){
+const D = JSON.parse(document.getElementById('report-data').textContent);
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt0 = d3.format(',.0f'), k1 = v => v == null ? '–' : d3.format(',.0f')(v / 1000) + 'k';
+const tip = document.getElementById('tip');
+function showTip(html, ev){
+  tip.innerHTML = html; tip.style.opacity = 1;
+  const r = tip.getBoundingClientRect(), pad = 14;
+  let x = ev.clientX + pad, y = ev.clientY + pad;
+  if (x + r.width > innerWidth - 8) x = ev.clientX - r.width - pad;
+  if (y + r.height > innerHeight - 8) y = ev.clientY - r.height - pad;
+  tip.style.left = Math.max(8, x) + 'px'; tip.style.top = Math.max(8, y) + 'px';
+}
+const hideTip = () => { tip.style.opacity = 0; };
+const row = (k, v, c) => `<div class="row"><span>${c ? `<i class="dot" style="background:${c}"></i>` : ''}${k}</span><b>${v}</b></div>`;
+function frame(id, h, m){
+  const el = document.getElementById(id); el.innerHTML = '';
+  const W = Math.max(260, el.clientWidth);
+  const svg = d3.select(el).append('svg').attr('width', W).attr('height', h).attr('viewBox', `0 0 ${W} ${h}`);
+  const g = svg.append('g').attr('transform', `translate(${m.l},${m.t})`);
+  return {svg, g, w: W - m.l - m.r, h: h - m.t - m.b};
+}
+function yAxis(f, y, ticks, fmt){ f.g.append('g').call(d3.axisLeft(y).ticks(ticks).tickSize(-f.w).tickFormat(fmt || null)).call(a => a.selectAll('.tick line').attr('stroke', css('--grid'))).call(a => a.selectAll('.tick text').attr('x', -6)); }
+function xBand(f, x, vals){ f.g.append('g').attr('transform', `translate(0,${f.h})`).call(d3.axisBottom(x).tickValues(vals).tickSize(0)).call(a => a.selectAll('text').attr('dy', '1.2em')); }
+const PALETTE = ['--ug', '--c1', '--c5', '--c3', '--c4', '--c2', '--c6', '--c7', '--c1', '--c3'];
+
+function fill(){
+  const k = D.kpi;
+  document.getElementById('k-leisure').innerHTML = Math.round(k.leisure_share) + '<small>%</small>';
+  document.getElementById('k-parks').innerHTML = Math.round(k.parks_2024 / 1000) + '<small>k</small>';
+  document.getElementById('k-gorilla').innerHTML = Math.round(k.gorilla_sold_2024) + '<small>%</small>';
+  document.getElementById('k-rec').innerHTML = Math.round(k.recovery_uganda) + '<small>%</small>';
+}
+
+/* 01 */
+function purposeChart(){
+  const P = D.purpose, keys = [['Leisure and holiday', '--c2'], ['Business and professional', '--c1'], ['Visiting friends and relatives', '--c3'], ['Other', '--c7']];
+  const years = d3.range(2012, 2025), f = frame('c-purpose', 290, {t:10, r:10, b:26, l:40});
+  const x = d3.scaleBand().domain(years).range([0, f.w]).padding(.2), y = d3.scaleLinear().domain([0, 1450]).range([f.h, 0]);
+  yAxis(f, y, 5); xBand(f, x, years.filter(v => f.w < 500 ? v % 4 === 0 : true));
+  P.forEach(d => { let b = 0; keys.forEach(([k, c]) => { const v = (d[k] || 0) / 1000; f.g.append('rect').attr('x', x(d.y)).attr('width', x.bandwidth()).attr('y', y(b + v)).attr('height', y(b) - y(b + v)).attr('fill', css(c)); b += v; });
+    f.g.append('rect').attr('x', x(d.y)).attr('width', x.bandwidth()).attr('y', 0).attr('height', f.h).attr('fill', 'transparent')
+      .on('pointermove', ev => showTip(`<div class="t">${d.y}</div>` + keys.map(([k, c]) => row(k, k1(d[k]), css(c))).join('') + row('Leisure share', Math.round(100 * d['Leisure and holiday'] / d3.sum(keys, ([k]) => d[k] || 0)) + '%') + `<div class="row"><span>${d.src}</span></div>`, ev)).on('pointerleave', hideTip); });
+  const gx = x(2017), gw = x(2019) + x.bandwidth() - x(2017);
+  f.g.append('rect').attr('x', gx).attr('width', gw).attr('y', 0).attr('height', f.h).attr('fill', css('--shade'));
+  f.g.append('text').attr('class', 'ann').attr('x', gx + gw / 2).attr('y', f.h / 2).attr('text-anchor', 'middle').text(f.w < 500 ? 'break' : 'not published; system changed');
+}
+function outsideChart(){
+  const R = D.regions, years = Object.keys(R).map(Number), f = frame('c-outside', 220, {t:10, r:10, b:26, l:36});
+  const x = d3.scaleBand().domain(years).range([0, f.w]).padding(.3), y = d3.scaleLinear().domain([0, 160]).range([f.h, 0]);
+  yAxis(f, y, 4); xBand(f, x, years);
+  years.forEach(yr => f.g.append('rect').attr('x', x(yr)).attr('width', x.bandwidth()).attr('y', y(R[yr].outside / 1000)).attr('height', f.h - y(R[yr].outside / 1000)).attr('fill', css('--c1'))
+    .on('pointermove', ev => showTip(`<div class="t">${yr}</div>${row('Outside Africa', fmt0(R[yr].outside))}${row('Share of arrivals', Math.round(100 * R[yr].outside / R[yr].total) + '%')}`, ev)).on('pointerleave', hideTip));
+}
+function marketsChart(){
+  const M = D.markets, f = frame('c-markets', M.length * 22 + 30, {t:4, r:44, b:22, l:80});
+  const y = d3.scaleBand().domain(M.map(d => d.m)).range([0, f.h]).padding(.25), x = d3.scaleLinear().domain([0, 36000]).range([0, f.w]);
+  f.g.append('g').attr('transform', `translate(0,${f.h})`).call(d3.axisBottom(x).ticks(4).tickFormat(d => d / 1000 + 'k').tickSize(4));
+  M.forEach(d => { f.g.append('text').attr('x', -8).attr('y', y(d.m) + y.bandwidth() / 2 + 4).attr('text-anchor', 'end').style('font-size', '12.5px').style('fill', css('--ink')).text(d.m);
+    f.g.append('rect').attr('y', y(d.m)).attr('height', y.bandwidth()).attr('width', x(d.v)).attr('rx', 2).attr('fill', css('--c4'));
+    f.g.append('text').attr('class', 'ann').attr('x', x(d.v) + 5).attr('y', y(d.m) + y.bandwidth() / 2 + 4).text(fmt0(d.v)); });
+}
+
+/* 02 */
+const RK = ['Uganda', 'Kenya', 'Tanzania', 'Rwanda', 'Ethiopia'];
+function recChart(){
+  document.getElementById('l-rec').innerHTML = RK.map((k, i) => `<span><i class="sw line" style="background:var(${PALETTE[i]})"></i>${k}</span>`).join('');
+  const f = frame('c-rec', 250, {t:10, r:10, b:26, l:36});
+  const x = d3.scaleLinear().domain([2015, 2023]).range([0, f.w]), y = d3.scaleLinear().domain([0, 160]).range([f.h, 0]);
+  yAxis(f, y, 4, d => d + '%'); f.g.append('g').attr('transform', `translate(0,${f.h})`).call(d3.axisBottom(x).ticks(f.w < 400 ? 4 : 8).tickFormat(d3.format('d')).tickSize(4));
+  f.g.append('line').attr('x1', 0).attr('x2', f.w).attr('y1', y(100)).attr('y2', y(100)).attr('stroke', css('--ink-2')).attr('stroke-dasharray', '2 4');
+  RK.forEach((k, i) => { const s = D.receipts[k], b = s.find(d => d.y === 2019).v;
+    f.g.append('path').attr('d', d3.line().x(d => x(d.y)).y(d => y(d.v / b * 100))(s)).attr('fill', 'none').attr('stroke', css(PALETTE[i])).attr('stroke-width', k === 'Uganda' ? 3 : 1.6); });
+  f.g.selectAll(null).data(d3.range(2015, 2024)).join('rect').attr('x', d => x(d) - f.w / 18).attr('width', f.w / 9).attr('height', f.h).attr('fill', 'transparent')
+    .on('pointermove', (ev, yr) => showTip(`<div class="t">${yr}</div>` + RK.map((k, i) => { const s = D.receipts[k], p = s.find(d => d.y === yr), b = s.find(d => d.y === 2019).v; return row(k, p ? `$${fmt0(p.v)}m (${Math.round(p.v / b * 100)}%)` : '–', css(PALETTE[i])); }).join(''), ev)).on('pointerleave', hideTip);
+}
+function rec23Chart(){
+  const R = Object.entries(D.recovery).sort((a, b) => b[1] - a[1]), f = frame('c-rec23', R.length * 24 + 30, {t:4, r:40, b:22, l:92});
+  const y = d3.scaleBand().domain(R.map(d => d[0])).range([0, f.h]).padding(.25), x = d3.scaleLinear().domain([0, 150]).range([0, f.w]);
+  f.g.append('g').attr('transform', `translate(0,${f.h})`).call(d3.axisBottom(x).ticks(4).tickFormat(d => d + '%').tickSize(4));
+  f.g.append('line').attr('x1', x(100)).attr('x2', x(100)).attr('y1', 0).attr('y2', f.h).attr('stroke', css('--ink-2')).attr('stroke-dasharray', '2 4');
+  R.forEach(([k, v]) => { f.g.append('text').attr('x', -8).attr('y', y(k) + y.bandwidth() / 2 + 4).attr('text-anchor', 'end').style('font-size', '12.5px').style('fill', css('--ink')).style('font-weight', k === 'Uganda' ? 700 : 400).text(k);
+    f.g.append('rect').attr('y', y(k)).attr('height', y.bandwidth()).attr('width', x(v)).attr('rx', 2).attr('fill', css(k === 'Uganda' ? '--c2' : '--c7'));
+    f.g.append('text').attr('class', k === 'Uganda' ? 'ann-strong' : 'ann').attr('x', x(v) + 5).attr('y', y(k) + y.bandwidth() / 2 + 4).text(Math.round(v) + '%'); });
+}
+
+/* 03 */
+function parksChart(){
+  const P = D.parks_total, f = frame('c-parks', 250, {t:10, r:10, b:26, l:36});
+  const x = d3.scaleBand().domain(P.map(d => d.y)).range([0, f.w]).padding(.2), y = d3.scaleLinear().domain([0, 460]).range([f.h, 0]);
+  yAxis(f, y, 4); xBand(f, x, P.map(d => d.y).filter(v => v % (f.w < 400 ? 4 : 2) === 0));
+  P.forEach(d => f.g.append('rect').attr('x', x(d.y)).attr('width', x.bandwidth()).attr('y', y(d.v / 1000)).attr('height', f.h - y(d.v / 1000)).attr('fill', css(d.y === 2020 || d.y === 2021 ? '--c7' : '--c3'))
+    .on('pointermove', ev => showTip(`<div class="t">${d.y}</div>${row('Park visits', fmt0(d.v))}`, ev)).on('pointerleave', hideTip));
+}
+function byParkChart(){
+  const keys = Object.keys(D.parks_by);
+  document.getElementById('l-byp').innerHTML = keys.map((k, i) => `<span><i class="sw line" style="background:var(${PALETTE[i]})"></i>${k}</span>`).join('');
+  const f = frame('c-byp', 250, {t:10, r:10, b:26, l:36});
+  const x = d3.scaleLinear().domain([2012, 2024]).range([0, f.w]), y = d3.scaleLinear().domain([0, 150]).range([f.h, 0]);
+  yAxis(f, y, 4); f.g.append('g').attr('transform', `translate(0,${f.h})`).call(d3.axisBottom(x).ticks(f.w < 400 ? 4 : 6).tickFormat(d3.format('d')).tickSize(4));
+  keys.forEach((k, i) => f.g.append('path').attr('d', d3.line().x(d => x(d.y)).y(d => y(d.v / 1000))(D.parks_by[k])).attr('fill', 'none').attr('stroke', css(PALETTE[i])).attr('stroke-width', 2));
+  f.g.selectAll(null).data(d3.range(2012, 2025)).join('rect').attr('x', d => x(d) - f.w / 26).attr('width', f.w / 13).attr('height', f.h).attr('fill', 'transparent')
+    .on('pointermove', (ev, yr) => showTip(`<div class="t">${yr}</div>` + keys.map((k, i) => { const p = D.parks_by[k].find(d => d.y === yr); return row(k, p ? fmt0(p.v) : '–', css(PALETTE[i])); }).join(''), ev)).on('pointerleave', hideTip);
+}
+function catChart(){
+  const C = D.cats, keys = [['Foreign Non Residents', '--c2'], ['Foreign Residents', '--c5'], ['East African Residents', '--c1'], ['Students', '--c3'], ['Others', '--c7']];
+  const f = frame('c-cat', 250, {t:10, r:10, b:26, l:36});
+  const x = d3.scaleBand().domain(C.map(d => d.y)).range([0, f.w]).padding(.25), y = d3.scaleLinear().domain([0, 460]).range([f.h, 0]);
+  yAxis(f, y, 4); xBand(f, x, C.map(d => d.y));
+  C.forEach(d => { let b = 0; keys.forEach(([k, c]) => { const v = (d[k] || 0) / 1000; f.g.append('rect').attr('x', x(d.y)).attr('width', x.bandwidth()).attr('y', y(b + v)).attr('height', y(b) - y(b + v)).attr('fill', css(c)); b += v; });
+    f.g.append('rect').attr('x', x(d.y)).attr('width', x.bandwidth()).attr('y', 0).attr('height', f.h).attr('fill', 'transparent')
+      .on('pointermove', ev => showTip(`<div class="t">${d.y}</div>` + keys.map(([k, c]) => row(k, d[k] == null ? 'not published' : fmt0(d[k]), css(c))).join(''), ev)).on('pointerleave', hideTip); });
+}
+
+/* 04 */
+function seasonChart(){
+  const S = D.season, M = D.months, f = frame('c-season', 290, {t:10, r:40, b:26, l:36});
+  const x = d3.scaleBand().domain(M).range([0, f.w]).padding(.2), y = d3.scaleLinear().domain([0, 160]).range([f.h, 0]), yr = d3.scaleLinear().domain([0, 200]).range([f.h, 0]);
+  yAxis(f, y, 4); f.g.append('g').attr('transform', `translate(${f.w},0)`).call(d3.axisRight(yr).ticks(4).tickSize(0)).call(a => a.select('.domain').remove()).call(a => a.selectAll('text').attr('x', 6));
+  xBand(f, x, M.filter((m, i) => f.w < 400 ? i % 2 === 0 : true));
+  M.forEach((m, i) => f.g.append('rect').attr('x', x(m)).attr('width', x.bandwidth()).attr('y', yr(S.rain[i])).attr('height', f.h - yr(S.rain[i])).attr('fill', css('--c1')).attr('opacity', .22));
+  const cx = m => x(m) + x.bandwidth() / 2;
+  [['parks', '--ug', 10, 2.6], ['gorilla', '--c2', 1, 2.2], ['arrivals', '--c6', 10, 1.6]].forEach(([k, c, mult, sw]) =>
+    f.g.append('path').attr('d', d3.line().x((d, i) => cx(M[i])).y(d => y(d * mult))(S[k])).attr('fill', 'none').attr('stroke', css(c)).attr('stroke-width', sw));
+  f.g.selectAll(null).data(M).join('rect').attr('x', m => x(m)).attr('width', x.bandwidth()).attr('height', f.h).attr('fill', 'transparent')
+    .on('pointermove', (ev, m) => { const i = M.indexOf(m); showTip(`<div class="t">${m}</div>${row('Park visits, % of year', S.parks[i].toFixed(1) + '%', css('--ug'))}${row('Gorilla permits sold', Math.round(S.gorilla[i]) + '%', css('--c2'))}${row('All arrivals, % of year', S.arrivals[i].toFixed(1) + '%', css('--c6'))}${row('Rain, Western', Math.round(S.rain[i]) + ' mm', css('--c1'))}`, ev); })
+    .on('pointerleave', hideTip);
+}
+
+/* 05 */
+function gyChart(){
+  const G = D.gorilla_year, f = frame('c-gy', 240, {t:10, r:10, b:26, l:32});
+  const x = d3.scaleBand().domain(G.map(d => d.y)).range([0, f.w]).padding(.25), y = d3.scaleLinear().domain([0, 75]).range([f.h, 0]);
+  yAxis(f, y, 4); xBand(f, x, G.map(d => d.y));
+  G.forEach(d => { f.g.append('rect').attr('x', x(d.y)).attr('width', x.bandwidth()).attr('y', y(d.a / 1000)).attr('height', f.h - y(d.a / 1000)).attr('fill', css('--c7'));
+    f.g.append('rect').attr('x', x(d.y) + x.bandwidth() * .2).attr('width', x.bandwidth() * .6).attr('y', y(d.s / 1000)).attr('height', f.h - y(d.s / 1000)).attr('fill', css('--c2'));
+    f.g.append('text').attr('class', 'ann').attr('x', x(d.y) + x.bandwidth() / 2).attr('y', y(d.a / 1000) - 5).attr('text-anchor', 'middle').text(Math.round(100 * d.s / d.a) + '%');
+    f.g.append('rect').attr('x', x(d.y)).attr('width', x.bandwidth()).attr('y', 0).attr('height', f.h).attr('fill', 'transparent')
+      .on('pointermove', ev => showTip(`<div class="t">${d.y}</div>${row('Available', fmt0(d.a), css('--c7'))}${row('Sold', fmt0(d.s), css('--c2'))}${row('Unsold', fmt0(d.a - d.s))}`, ev)).on('pointerleave', hideTip); });
+}
+function gmChart(){
+  const M = D.months, f = frame('c-gm', 240, {t:10, r:10, b:26, l:36});
+  const x = d3.scalePoint().domain(M).range([0, f.w]), y = d3.scaleLinear().domain([0, 115]).range([f.h, 0]);
+  yAxis(f, y, 5, d => d + '%'); f.g.append('g').attr('transform', `translate(0,${f.h})`).call(d3.axisBottom(x).tickSize(0).tickFormat((d, i) => f.w < 400 && i % 2 ? '' : d)).call(a => a.selectAll('text').attr('dy', '1.2em'));
+  f.g.append('line').attr('x1', 0).attr('x2', f.w).attr('y1', y(100)).attr('y2', y(100)).attr('stroke', css('--ink-2')).attr('stroke-dasharray', '2 4');
+  [[2022, '--c7', 1.4], [2023, '--c6', 1.6], [2024, '--c2', 2.6]].forEach(([yr, c, sw]) => {
+    const v = D.gorilla_month[yr];
+    f.g.append('path').attr('d', d3.line().x((d, i) => x(M[i])).y(d => y(d))(v)).attr('fill', 'none').attr('stroke', css(c)).attr('stroke-width', sw);
+  });
+  f.g.selectAll(null).data(M).join('rect').attr('x', m => x(m) - f.w / 24).attr('width', f.w / 12).attr('height', f.h).attr('fill', 'transparent')
+    .on('pointermove', (ev, m) => { const i = M.indexOf(m); showTip(`<div class="t">${m}</div>` + [[2022, '--c7'], [2023, '--c6'], [2024, '--c2']].map(([yr, c]) => row(yr, Math.round(D.gorilla_month[yr][i]) + '% sold', css(c))).join(''), ev); }).on('pointerleave', hideTip);
+}
+function gCards(){
+  const k = D.kpi;
+  const c = [['Unsold in 2024', fmt0(k.unsold_2024), 'gorilla permits, out of 71,372 available.', 'dry'],
+             ['Upper-bound value', '$' + Math.round(k.unsold_value_m) + 'm', 'if every unsold permit were sold at the US$800 foreign non-resident price.', 'dry'],
+             ['In the wet months', Math.round(k.wet_unsold_share) + '%', 'of 2024\'s unsold permits fell in March, April, May and November.', 'wet']];
+  document.getElementById('g-cards').innerHTML = c.map(([t, v, p, cl]) => `<div class="panel"><span class="tag ${cl}"><i></i>${t}</span><div class="big num">${v}</div><p>${p}</p></div>`).join('');
+}
+
+/* 06 */
+function pmChart(){
+  const P = D.parks_monthly.map(d => ({t: d3.timeParse('%Y-%m')(d.d), v: d.v})), f = frame('c-pm', 240, {t:10, r:10, b:26, l:36});
+  const x = d3.scaleTime().domain(d3.extent(P, d => d.t)).range([0, f.w]), y = d3.scaleLinear().domain([0, 70]).range([f.h, 0]);
+  const s0 = d3.timeParse('%Y-%m')('2022-09'), s1 = d3.timeParse('%Y-%m')('2023-01');
+  f.g.append('rect').attr('x', x(s0)).attr('width', x(s1) - x(s0)).attr('y', 0).attr('height', f.h).attr('fill', css('--shade'));
+  yAxis(f, y, 4); f.g.append('g').attr('transform', `translate(0,${f.h})`).call(d3.axisBottom(x).ticks(f.w < 400 ? 5 : 10).tickSize(4));
+  const line = d3.line().defined((d, i) => i === 0 || (d.t - P[i - 1].t) < 40 * 864e5).x(d => x(d.t)).y(d => y(d.v / 1000));
+  f.g.append('path').attr('d', line(P)).attr('fill', 'none').attr('stroke', css('--c3')).attr('stroke-width', 1.8);
+  const bis = d3.bisector(d => d.t).center;
+  f.g.append('rect').attr('width', f.w).attr('height', f.h).attr('fill', 'transparent')
+    .on('pointermove', ev => { const p = P[bis(P, x.invert(d3.pointer(ev)[0]))]; showTip(`<div class="t">${d3.timeFormat('%b %Y')(p.t)}</div>${row('Park visits', fmt0(p.v), css('--c3'))}`, ev); }).on('pointerleave', hideTip);
+}
+
+function drawAll(){ purposeChart(); outsideChart(); marketsChart(); recChart(); rec23Chart(); parksChart(); byParkChart(); catChart(); seasonChart(); gyChart(); gmChart(); pmChart(); }
+fill(); gCards(); drawAll();
+let raf; const redraw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(drawAll); };
+let lastW = innerWidth; addEventListener('resize', () => { if (innerWidth !== lastW) { lastW = innerWidth; redraw(); } });
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redraw);
+new MutationObserver(redraw).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);
+})();
+</script>
+
+</body></html>

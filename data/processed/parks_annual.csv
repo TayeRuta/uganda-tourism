@@ -1,0 +1,154 @@
+park,year,visits,source
+Bwindi Impenetrable,2012,18259.0,UBOS 2017
+Kibale,2012,10372.0,UBOS 2017
+Kidepo Valley,2012,2300.0,UBOS 2017
+Lake Mburo,2012,22927.0,UBOS 2017
+Mgahinga Gorilla,2012,2497.0,UBOS 2017
+Mount Elgon,2012,1565.0,UBOS 2017
+Murchison Falls,2012,58172.0,UBOS 2017
+Queen Elizabeth,2012,60803.0,UBOS 2017
+Rwenzori Mountains,2012,1663.0,UBOS 2017
+Semliki,2012,3591.0,UBOS 2017
+Toro Semliki Wildlife Reserve,2012,0.0,UBOS 2017
+Bwindi Impenetrable,2013,21695.0,UBOS 2017
+Kibale,2013,10834.0,UBOS 2017
+Kidepo Valley,2013,2890.0,UBOS 2017
+Lake Mburo,2013,14068.0,UBOS 2017
+Mgahinga Gorilla,2013,8952.0,UBOS 2017
+Mount Elgon,2013,2096.0,UBOS 2017
+Murchison Falls,2013,69193.0,UBOS 2017
+Queen Elizabeth,2013,70798.0,UBOS 2017
+Rwenzori Mountains,2013,2724.0,UBOS 2017
+Semliki,2013,5752.0,UBOS 2017
+Toro Semliki Wildlife Reserve,2013,4948.0,UBOS 2017
+Bwindi Impenetrable,2014,20611.0,UBOS 2017
+Kibale,2014,12097.0,UBOS 2017
+Kidepo Valley,2014,4091.0,UBOS 2017
+Lake Mburo,2014,26980.0,UBOS 2017
+Mgahinga Gorilla,2014,3033.0,UBOS 2017
+Mount Elgon,2014,2314.0,UBOS 2017
+Murchison Falls,2014,58769.0,UBOS 2017
+Queen Elizabeth,2014,66844.0,UBOS 2017
+Rwenzori Mountains,2014,2758.0,UBOS 2017
+Semliki,2014,4824.0,UBOS 2017
+Toro Semliki Wildlife Reserve,2014,564.0,UBOS 2017
+Bwindi Impenetrable,2015,16476.0,UBOS 2020
+Kibale,2015,10463.0,UBOS 2020
+Kidepo Valley,2015,5663.0,UBOS 2020
+Lake Mburo,2015,24979.0,UBOS 2020
+Mgahinga Gorilla,2015,2648.0,UBOS 2020
+Mount Elgon,2015,2669.0,UBOS 2020
+Murchison Falls,2015,65366.0,UBOS 2020
+Queen Elizabeth,2015,72964.0,UBOS 2020
+Rwenzori Mountains,2015,3343.0,UBOS 2020
+Semliki,2015,10389.0,UBOS 2020
+Toro Semliki Wildlife Reserve,2015,598.0,UBOS 2020
+Bwindi Impenetrable,2016,19522.0,UBOS 2020
+Kibale,2016,11760.0,UBOS 2020
+Kidepo Valley,2016,7824.0,UBOS 2020
+Lake Mburo,2016,26012.0,UBOS 2020
+Mgahinga Gorilla,2016,3840.0,UBOS 2020
+Mount Elgon,2016,3335.0,UBOS 2020
+Murchison Falls,2016,75360.0,UBOS 2020
+Queen Elizabeth,2016,85905.0,UBOS 2020
+Rwenzori Mountains,2016,3192.0,UBOS 2020
+Semliki,2016,8214.0,UBOS 2020
+Toro Semliki Wildlife Reserve,2016,761.0,UBOS 2020
+Bwindi Impenetrable,2017,26576.0,UBOS 2020
+Kibale,2017,15728.0,UBOS 2020
+Kidepo Valley,2017,11018.0,UBOS 2020
+Lake Mburo,2017,30403.0,UBOS 2020
+Mgahinga Gorilla,2017,5505.0,UBOS 2020
+Mount Elgon,2017,4391.0,UBOS 2020
+Murchison Falls,2017,93256.0,UBOS 2020
+Queen Elizabeth,2017,81660.0,UBOS 2020
+Rwenzori Mountains,2017,3633.0,UBOS 2020
+Semliki,2017,12850.0,UBOS 2020
+Toro Semliki Wildlife Reserve,2017,651.0,UBOS 2020
+Bwindi Impenetrable,2018,37514.0,UBOS 2020
+Kibale,2018,18843.0,UBOS 2020
+Kidepo Valley,2018,12056.0,UBOS 2020
+Lake Mburo,2018,35206.0,UBOS 2020
+Mgahinga Gorilla,2018,6781.0,UBOS 2020
+Mount Elgon,2018,3405.0,UBOS 2020
+Murchison Falls,2018,102305.0,UBOS 2020
+Queen Elizabeth,2018,86875.0,UBOS 2020
+Rwenzori Mountains,2018,5146.0,UBOS 2020
+Semliki,2018,16628.0,UBOS 2020
+Toro Semliki Wildlife Reserve,2018,586.0,UBOS 2020
+Bwindi Impenetrable,2019,36341.0,UBOS 2020
+Kibale,2019,19521.0,UBOS 2020
+Kidepo Valley,2019,12648.0,UBOS 2020
+Lake Mburo,2019,33188.0,UBOS 2020
+Mgahinga Gorilla,2019,7593.0,UBOS 2020
+Mount Elgon,2019,3519.0,UBOS 2020
+Murchison Falls,2019,103665.0,UBOS 2020
+Queen Elizabeth,2019,77995.0,UBOS 2020
+Rwenzori Mountains,2019,6043.0,UBOS 2020
+Semliki,2019,22577.0,UBOS 2020
+Toro Semliki Wildlife Reserve,2019,771.0,UBOS 2020
+Bwindi Impenetrable,2020,9829.0,MTWA 2025
+Katonga Wildlife Reserve,2020,65.0,MTWA 2025
+Kibale,2020,5558.0,MTWA 2025
+Kidepo Valley,2020,4860.0,MTWA 2025
+Lake Mburo,2020,10727.0,MTWA 2025
+Mgahinga Gorilla,2020,2409.0,MTWA 2025
+Mount Elgon,2020,1006.0,MTWA 2025
+Murchison Falls,2020,33194.0,MTWA 2025
+Pian Upe Wildlife Reserve,2020,336.0,MTWA 2025
+Queen Elizabeth,2020,24362.0,MTWA 2025
+Rwenzori Mountains,2020,1151.0,MTWA 2025
+Semliki,2020,7322.0,MTWA 2025
+Toro Semliki Wildlife Reserve,2020,512.0,MTWA 2025
+Bwindi Impenetrable,2021,15736.0,MTWA 2025
+Katonga Wildlife Reserve,2021,153.0,MTWA 2025
+Kibale,2021,7789.0,MTWA 2025
+Kidepo Valley,2021,7846.0,MTWA 2025
+Lake Mburo,2021,18741.0,MTWA 2025
+Mgahinga Gorilla,2021,3455.0,MTWA 2025
+Mount Elgon,2021,780.0,MTWA 2025
+Murchison Falls,2021,78655.0,MTWA 2025
+Pian Upe Wildlife Reserve,2021,516.0,MTWA 2025
+Queen Elizabeth,2021,40488.0,MTWA 2025
+Rwenzori Mountains,2021,1048.0,MTWA 2025
+Semliki,2021,14403.0,MTWA 2025
+Toro Semliki Wildlife Reserve,2021,378.0,MTWA 2025
+Bwindi Impenetrable,2022,32628.0,MTWA 2025
+Katonga Wildlife Reserve,2022,329.0,MTWA 2025
+Kibale,2022,15641.0,MTWA 2025
+Kidepo Valley,2022,8343.0,MTWA 2025
+Lake Mburo,2022,28540.0,MTWA 2025
+Mgahinga Gorilla,2022,5477.0,MTWA 2025
+Mount Elgon,2022,1246.0,MTWA 2025
+Murchison Falls,2022,146649.0,MTWA 2025
+Pian Upe Wildlife Reserve,2022,915.0,MTWA 2025
+Queen Elizabeth,2022,95340.0,MTWA 2025
+Rwenzori Mountains,2022,5659.0,MTWA 2025
+Semliki,2022,26631.0,MTWA 2025
+Toro Semliki Wildlife Reserve,2022,471.0,MTWA 2025
+Bwindi Impenetrable,2023,41412.0,MTWA 2025
+Katonga Wildlife Reserve,2023,278.0,MTWA 2025
+Kibale,2023,18848.0,MTWA 2025
+Kidepo Valley,2023,6388.0,MTWA 2025
+Lake Mburo,2023,36970.0,MTWA 2025
+Mgahinga Gorilla,2023,7156.0,MTWA 2025
+Mount Elgon,2023,1134.0,MTWA 2025
+Murchison Falls,2023,141335.0,MTWA 2025
+Pian Upe Wildlife Reserve,2023,1369.0,MTWA 2025
+Queen Elizabeth,2023,93970.0,MTWA 2025
+Rwenzori Mountains,2023,7524.0,MTWA 2025
+Semliki,2023,31114.0,MTWA 2025
+Toro Semliki Wildlife Reserve,2023,416.0,MTWA 2025
+Bwindi Impenetrable,2024,43364.0,MTWA 2025
+Katonga Wildlife Reserve,2024,457.0,MTWA 2025
+Kibale,2024,19748.0,MTWA 2025
+Kidepo Valley,2024,7613.0,MTWA 2025
+Lake Mburo,2024,44043.0,MTWA 2025
+Mgahinga Gorilla,2024,7362.0,MTWA 2025
+Mount Elgon,2024,1354.0,MTWA 2025
+Murchison Falls,2024,139304.0,MTWA 2025
+Pian Upe Wildlife Reserve,2024,1207.0,MTWA 2025
+Queen Elizabeth,2024,124645.0,MTWA 2025
+Rwenzori Mountains,2024,4835.0,MTWA 2025
+Semliki,2024,42545.0,MTWA 2025
+Toro Semliki Wildlife Reserve,2024,290.0,MTWA 2025

@@ -1,0 +1,17 @@
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Source PDFs (about 60 MB), re-downloaded by scripts/fetch_data.py; tables are extracted to data/processed/
+data/raw/pdf/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
