@@ -78,6 +78,7 @@ python scripts/build_report_data.py
 
 ## Related projects
 
+- [Uganda hospitality](https://github.com/TayeRuta/uganda-hospitality): hotel occupancy, value added, where the graded hotels are, and an audit of the statistics
 - [Uganda agriculture synthesis](https://tayeruta.github.io/uganda-agriculture/): rainfall, food prices, coffee, irrigation and food trade
 - [Uganda rainfall analysis](https://github.com/TayeRuta/uganda-rainfall-analysis): national, regional and Indian Ocean Dipole analysis
 
